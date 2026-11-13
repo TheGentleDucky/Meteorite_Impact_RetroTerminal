@@ -51,7 +51,7 @@ Al seleccionar un marcador, se muestra una ventana de información con los datos
 - Diámetro.
 - Antigüedad estimada.
 - Coordenadas geográficas.
-- Tipo de cuerpo impactante (*bolide type*).
+- Tipo de cuerpo impactante (*material type*).
 
 La información se presenta mediante una animación de escritura progresiva, acompañada de elementos gráficos que simulan una terminal de exploración.
 
