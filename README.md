@@ -4,6 +4,11 @@ Created with CodeSandbox
 
 https://codesandbox.io/p/sandbox/ig-s8-cql9zg
 
+## Video
+
+https://youtu.be/vqitZB5Q83E
+
+
 ## 1. Descripción del proyecto
 
 Este proyecto consiste en una visualización interactiva en 3D del planeta Tierra, desarrollada utilizando **Three.js** y WebGL.
