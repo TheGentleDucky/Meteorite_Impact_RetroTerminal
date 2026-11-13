@@ -1,0 +1,194 @@
+<html>
+  <head>
+    <title>Parcel Sandbox - Impact Craters Terminal</title>
+    <meta charset="UTF-8" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #000;
+      }
+      #app {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+      }
+
+      /* --- ESTILOS DE LA TERMINAL RETRO-FUTURISTA (LUMÍNICA) --- */
+      #crater-info {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 380px;
+        background-color: rgba(3, 15, 8, 0.94);
+        border: 2px solid #33ff85;
+        /* Halo de luz retro / resplandor fosforescente */
+        box-shadow: 0 0 20px rgba(51, 255, 133, 0.5),
+          inset 0 0 15px rgba(51, 255, 133, 0.3);
+        font-family: "Courier New", Courier, monospace;
+        color: #33ff85;
+        /* Efecto de brillo en el texto */
+        text-shadow: 0 0 6px rgba(51, 255, 133, 0.7);
+        padding: 15px;
+        z-index: 1000;
+        box-sizing: border-box;
+        animation: crt-flicker 0.15s infinite;
+      }
+
+      @keyframes crt-flicker {
+        0% {
+          opacity: 0.97;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.98;
+        }
+      }
+
+      /* Líneas de escaneo CRT */
+      #crater-info::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(
+          rgba(18, 16, 16, 0) 50%,
+          rgba(0, 0, 0, 0.35) 50%
+        );
+        background-size: 100% 4px;
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      .terminal-header {
+        border-bottom: 1px dashed #33ff85;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+        font-size: 11px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #close-info {
+        background: none;
+        border: none;
+        color: #33ff85;
+        cursor: pointer;
+        font-family: "Courier New", Courier, monospace;
+        font-weight: bold;
+        font-size: 14px;
+        text-shadow: 0 0 5px #33ff85;
+      }
+
+      .crater-screen-container {
+        width: 100%;
+        height: 140px;
+        border: 1px solid #33ff85;
+        box-shadow: inset 0 0 10px rgba(51, 255, 133, 0.4);
+        margin-bottom: 12px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      #terminal-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Filtro ajustado a tu verde ambiental */
+        filter: sepia(100%) hue-rotate(70deg) saturate(400%) contrast(140%)
+          brightness(85%);
+      }
+
+      .terminal-body {
+        font-size: 12px;
+        line-height: 1.5;
+        white-space: pre-line;
+        min-height: 100px;
+      }
+      .crt-global-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vh;
+        background: linear-gradient(
+            rgba(18, 16, 16, 0) 50%,
+            rgba(0, 0, 0, 0.2) 50%
+          ),
+          radial-gradient(
+            circle,
+            rgba(0, 0, 0, 0) 60%,
+            rgba(0, 10, 2, 0.6) 100%
+          );
+        background-size: 100% 3px, 100% 100%;
+        pointer-events: none;
+        z-index: 999;
+      }
+      .marcelo {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 6px; /* Tamaño reducido para que encaje bien en la ventana */
+        line-height: 9px;
+        color: #33ff85;
+        text-shadow: 0 0 5px rgba(51, 255, 133, 0.7);
+        text-align: center;
+        margin: 5px 0 10px 0;
+        background: rgba(0, 20, 5, 0.5);
+        border: 1px dashed rgba(51, 255, 133, 0.3);
+        overflow: hidden;
+      }
+
+      #info-url {
+        display: inline-block;
+        margin-top: 10px;
+        color: #33ff85;
+        font-size: 11px;
+        text-decoration: underline;
+        text-shadow: 0 0 4px #33ff85;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="crt-global-overlay"></div>
+
+      <div id="crater-info" hidden>
+        <div class="terminal-header">
+          <span>ES-QU-LT // SECTOR: IMPACT_ANALYSIS</span>
+          <button id="close-info" aria-label="Cerrar">[X]</button>
+        </div>
+
+        <div class="crater-screen-container">
+          <img id="terminal-img" src="/src/clater.jpg" alt="Crater Zoom" />
+        </div>
+
+        <!-- Contenedor donde se inyectará el texto con efecto de escritura -->
+        <div id="terminal-text" class="terminal-body"></div>
+        <pre class="marcelo">
+          ______
+          .-"      "-.
+          /             \
+          |              |
+          |,  .-.  .-.  ,|
+          | )(__/  \__)( |
+          |/     /\     \|
+          (_     ^^     _)
+           \__|IIIIII|__/
+           |'\IIIIII/ |
+           \          /
+      sOc   `--------`
+          </pre>
+      </div>
+    </div>
+
+    <script src="src/index.js"></script>
+  </body>
+</html>
